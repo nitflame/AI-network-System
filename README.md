@@ -78,3 +78,15 @@ curl -X POST "http://127.0.0.1:8000/allocate" -H "Content-Type: application/json
 ## Reality Statement
 This system simulates network behavior and provides AI decision support.
 It does not directly control real telecom infrastructure.
+
+## Frontend Interface (Team 3)
+A modern, real-time React dashboard has been integrated to visualize the network traffic, run AI predictions, and execute 5G slicing logic interactively.
+
+### Network Monitoring & Dashboard
+![Dashboard Overview](docs/assets/1.png)
+
+### AI Congestion Prediction
+![Prediction Engine](docs/assets/2.png)
+
+### 5G Slicing Allocator
+![Slicing Allocator](docs/assets/3.png)
