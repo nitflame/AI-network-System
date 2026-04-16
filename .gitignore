@@ -1,0 +1,17 @@
+# Environments
+venv/
+env/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.vscode/
+.idea/
+
+# You might want to uncomment these if you don't want to commit generated data or models:
+data/
+model/*.pkl
