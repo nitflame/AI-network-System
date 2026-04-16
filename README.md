@@ -2,6 +2,12 @@
 
 AI-driven network intelligence for high-density environments.
 
+## Project Structure
+- `backend/` - Team 2 FastAPI API and slicing decision engine
+- `model/` - Team 1 labeling, training, and prediction modules
+- `simulation/` - Team 1 simulation module
+- `docs/` - project handoff notes and quick guides
+
 ## Problem
 In places like colleges, stadiums, and public events, many users connect at once.
 This causes latency, unstable connectivity, and poor service for critical communication.
@@ -28,11 +34,14 @@ pip install -r requirements.txt
 
 ## Run
 ```bash
-uvicorn app:app --reload --host 0.0.0.0 --port 8000
+uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Open docs at:
 - `http://127.0.0.1:8000/docs`
+
+Detailed handoff document:
+- `docs/read-this-first.md`
 
 ## Model Integration
 Team 1 output model should be available at:

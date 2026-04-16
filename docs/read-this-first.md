@@ -13,9 +13,9 @@ This project helps by predicting state and prioritizing traffic classes before f
 - Team 3: dashboard and presentation
 
 ## Team 2 work added in this repo
-- `app.py` - FastAPI backend with `/simulate`, `/predict`, `/allocate`, `/health`
-- `model_service.py` - integrates Team 1 model with fallback heuristic
-- `decision_engine.py` - traffic-slice allocation logic
+- `backend/app.py` - FastAPI backend with `/simulate`, `/predict`, `/allocate`, `/health`
+- `backend/model_service.py` - integrates Team 1 model with fallback heuristic
+- `backend/decision_engine.py` - traffic-slice allocation logic
 - `README.md` - run instructions and endpoint examples
 
 ## How to run
@@ -23,7 +23,7 @@ This project helps by predicting state and prioritizing traffic classes before f
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn app:app --reload --host 0.0.0.0 --port 8000
+uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Open:

@@ -7,8 +7,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from decision_engine import SliceDemand, allocate_slices
-from model_service import model_service
+from backend.decision_engine import SliceDemand, allocate_slices
+from backend.model_service import model_service
 from simulation.simulation import generate_row
 
 CongestionLabel = Literal["HIGH", "MEDIUM", "LOW"]
