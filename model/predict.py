@@ -33,29 +33,27 @@ BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
 
 # -- Canonical Feature Order (MUST match train_model.py) ----------------------
-FEATURE_COLS = [
+NUMERIC_FEATURES = [
     "signal_strength",
     "bandwidth_usage",
     "latency",
     "packet_loss",
     "num_users_in_zone",
     "time_of_day",
-    "congestion_score",
     "network_stability",
 ]
+CATEGORICAL_FEATURES = ["zone"]
+FEATURE_COLS = NUMERIC_FEATURES + CATEGORICAL_FEATURES
 
 
 # -- Derived Feature Computation (same logic as label_data.py) ----------------
 def compute_derived_features(sample: dict) -> dict:
     """
-    Recompute congestion_score and network_stability from raw inputs.
+    Recompute network_stability from raw inputs.
     Must mirror the logic in model/label_data.py exactly.
+    Note: congestion_score is NOT included — it was removed during training
+    to prevent target leakage.
     """
-    sample["congestion_score"] = (
-        sample["latency"]
-        + (sample["packet_loss"] * 20)
-        + (sample["num_users_in_zone"] / 5)
-    )
     sample["network_stability"] = (
         sample["signal_strength"] - sample["packet_loss"] * 10
     )
@@ -116,6 +114,7 @@ def predict_sample(raw_sample: dict) -> dict:
 # -- Demo Sample Data ----------------------------------------------------------
 # Simulates a peak-hour Stadium scenario (replace with real API input)
 RAW_SAMPLE = {
+    "zone":              "Stadium",
     "signal_strength":   55.0,   # dBm  -- moderate signal
     "bandwidth_usage":    7.5,   # Mbps -- high usage
     "latency":          220.0,   # ms   -- high latency (peak hour)
@@ -126,6 +125,7 @@ RAW_SAMPLE = {
 
 # A second sample representing good-network conditions
 GOOD_SAMPLE = {
+    "zone":              "Library",
     "signal_strength":   85.0,
     "bandwidth_usage":    1.2,
     "latency":           45.0,
@@ -159,7 +159,6 @@ def main():
         result = predict_sample(sample)
 
         print("\n  Derived Features (computed):")
-        print(f"    congestion_score   = {result['input_features']['congestion_score']:.2f}")
         print(f"    network_stability  = {result['input_features']['network_stability']:.2f}")
 
         cls     = result["predicted_class"]

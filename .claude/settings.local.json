@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(curl -s http://localhost:8000/simulate)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X POST http://localhost:8000/predict -H \"Content-Type: application/json\" -d '{\"zone\":\"Stadium\",\"signal_strength\":55,\"bandwidth_usage\":8.5,\"latency\":180,\"packet_loss\":4.2,\"num_users_in_zone\":280,\"time_of_day\":20}')",
+      "Bash(pkill -f \"uvicorn\")",
+      "Bash(curl -s -X POST http://localhost:8000/simulate)",
+      "Bash(curl -s -X POST http://localhost:8000/allocate -H \"Content-Type: application/json\" -d '{\"total_bandwidth_mbps\":100,\"demand_mbps\":{\"high_priority_mbps\":40,\"medium_priority_mbps\":35,\"low_priority_mbps\":25},\"congestion_label\":\"HIGH\"}')",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/api/health)",
+      "Bash(curl -s -X POST http://localhost:5173/api/simulate)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(node:*)",
+      "Bash(ls -la /tmp/final_*.png)",
+      "Bash(grep -c \"ml-\\\\[260px\\\\]\\\\|margin-left.*260\" dist/assets/*.css)",
+      "Bash(grep 260:*)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(grep:*)",
+      "Bash(curl -s -X POST http://localhost:5173/api/predict -H \"Content-Type: application/json\" -d '{\"zone\":\"Stadium\",\"signal_strength\":55,\"bandwidth_usage\":8.5,\"latency\":180,\"packet_loss\":4.2,\"num_users_in_zone\":280,\"time_of_day\":20}')"
+    ]
+  }
+}

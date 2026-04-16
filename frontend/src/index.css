@@ -70,3 +70,20 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 0 0 3px var(--color-bg-card), 0 0 0 5px rgba(79, 143, 247, 0.3);
 }
 ::selection { background: rgba(79, 143, 247, 0.25); color: var(--color-text-primary); }
+
+/* Leaflet Map Premium Dark Theme Overrides */
+.leaflet-container { background: transparent !important; outline: none; }
+.premium-popup .leaflet-popup-content-wrapper, .premium-popup .leaflet-popup-tip {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-active);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8);
+  color: var(--color-text-primary);
+  border-radius: 8px;
+}
+.map-tooltip.leaflet-tooltip {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+.map-tooltip.leaflet-tooltip-top:before { display: none; }

@@ -9,6 +9,7 @@ import ZoneCard from '../components/ZoneCard';
 import StatusBadge from '../components/StatusBadge';
 import { api } from '../lib/api';
 import { ZONES } from '../lib/constants';
+import LiveMap from '../components/LiveMap';
 
 const ZC = { Hostel: '#A78BFA', Library: '#22D3EE', Cafeteria: '#FBBF24', Academic_Block: '#4F8FF7', Stadium: '#F87171' };
 
@@ -92,37 +93,9 @@ export default function Dashboard() {
       <div className="flex-1 grid grid-cols-12 gap-3 min-h-0">
         {/* Left: chart + zones */}
         <div className="col-span-8 flex flex-col gap-3 min-h-0">
-          {/* Traffic chart */}
-          <div className="card p-4 flex-1 flex flex-col min-h-0">
-            <div className="flex items-center justify-between mb-2 shrink-0">
-              <h2 className="text-[12px] font-semibold text-text-primary">Network Traffic</h2>
-              <div className="flex items-center gap-4">
-                {[{ c: '#4F8FF7', l: 'Users' }, { c: '#FBBF24', l: 'Latency (ms)' }].map(({ c, l }) => (
-                  <div key={l} className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: c }} />
-                    <span className="text-[10px] text-text-muted">{l}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex-1 min-h-0">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={history} margin={{ top: 4, right: 8, bottom: 0, left: -8 }}>
-                  <defs>
-                    <linearGradient id="gU" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4F8FF7" stopOpacity={0.12} />
-                      <stop offset="100%" stopColor="#4F8FF7" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
-                  <XAxis dataKey="time" tickLine={false} axisLine={false} interval="preserveStartEnd" minTickGap={80} />
-                  <YAxis tickLine={false} axisLine={false} width={38} />
-                  <Tooltip content={<Tip />} />
-                  <Area type="monotone" dataKey="users" stroke="#4F8FF7" fill="url(#gU)" strokeWidth={1.5} dot={false} name="Users" isAnimationActive={history.length <= 2} />
-                  <Area type="monotone" dataKey="avgLatency" stroke="#FBBF24" fill="none" strokeWidth={1.5} dot={false} name="Latency" isAnimationActive={history.length <= 2} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+          {/* Geospatial Live Map */}
+          <div className="flex-1 min-h-0 flex flex-col p-[2px] rounded-xl bg-gradient-to-b from-white/10 to-transparent">
+             <LiveMap zoneData={zoneData} />
           </div>
 
           {/* Zone cards - 5 across */}
