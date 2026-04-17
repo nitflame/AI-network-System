@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/AI-network-System/', // <--- ADD THIS LINE HERE
+  base: '/AI-network-System/', 
   plugins: [react(), tailwindcss()],
   server: {
     port: 5173,
